@@ -2,9 +2,14 @@
 __pycache__/
 *.py[codz]
 *$py.class
+.idea/
 
 # C extensions
 *.so
+
+# Paper (source files excluded, but keep rendered figures)
+paper_latex/
+!docs/assets/images/
 
 # Distribution / packaging
 .Python

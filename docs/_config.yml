@@ -1,0 +1,9 @@
+title: "MultiChange3D"
+description: "A Multi-Scene, Multi-Sensor Dataset for Benchmarking 3D Geometric Change Detection"
+baseurl: "/multichange3d"
+url: "https://3dom-fbk.github.io"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

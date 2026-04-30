@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MultiChange3D &mdash; A Multi-Scene, Multi-Sensor Dataset for 3D Change Detection</title>
+  <meta name="description" content="MultiChange3D: A multi-scene, multi-sensor 3D change detection dataset with co-registered point cloud pairs and ground-truth labels for benchmarking geometric change detection methods.">
+  <meta property="og:title" content="MultiChange3D Dataset">
+  <meta property="og:description" content="A Multi-Scene, Multi-Sensor Dataset for Benchmarking 3D Geometric Change Detection">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --primary: #0366d6;
+      --primary-dark: #024ea4;
+      --text: #24292e;
+      --text-secondary: #586069;
+      --bg: #ffffff;
+      --bg-alt: #f6f8fa;
+      --border: #e1e4e8;
+      --viewer-bg: #1a1a2e;
+      --max-w: 1100px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); color: var(--text); line-height: 1.6; background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; }
+
+    /* Layout */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--border); }
+    h2 { font-size: 1.7em; margin: 0 0 24px 0; }
+    h3 { font-size: 1.25em; margin: 24px 0 12px 0; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 100%);
+      color: #fff; text-align: center; padding: 64px 24px 48px;
+    }
+    .hero h1 { font-size: 2.6em; margin: 0 0 8px 0; font-weight: 700; letter-spacing: -0.02em; }
+    .hero .subtitle { font-size: 1.15em; color: #adbac7; margin: 0 0 20px 0; }
+    .hero .authors { font-size: 0.95em; color: #8b949e; margin: 4px 0; }
+    .hero .authors a { color: #58a6ff; }
+    .hero .venue { font-size: 0.88em; color: #8b949e; font-style: italic; margin-top: 12px; }
+    .badges { margin-top: 20px; }
+    .btn {
+      display: inline-block; padding: 10px 22px; margin: 4px;
+      border-radius: 6px; font-weight: 600; font-size: 0.9em;
+      color: #fff; text-decoration: none; transition: opacity .15s;
+    }
+    .btn:hover { opacity: 0.85; text-decoration: none; }
+    .btn-blue { background: var(--primary); }
+    .btn-green { background: #2ea44f; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 0.88em; }
+    th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
+    th { background: var(--bg-alt); font-weight: 600; }
+    tr:hover { background: #f9fbfd; }
+
+    /* Figures */
+    .fig { text-align: center; margin: 24px 0; }
+    .fig img { border-radius: 4px; }
+    .fig-caption { font-size: 0.88em; color: var(--text-secondary); margin-top: 8px; font-style: italic; }
+
+    /* Citation block */
+    .bib-block {
+      background: var(--bg-alt); padding: 16px 20px; border-radius: 6px;
+      font-family: var(--mono); font-size: 0.82em; overflow-x: auto;
+      white-space: pre; line-height: 1.5;
+    }
+
+    /* ======================================= */
+    /* Point Cloud Explorer                    */
+    /* ======================================= */
+    .scene-groups { margin-bottom: 16px; }
+    .scene-group { margin-bottom: 8px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .scene-group-label {
+      font-size: 0.78em; font-weight: 700; text-transform: uppercase; color: var(--text-secondary);
+      width: 110px; flex-shrink: 0;
+    }
+    .scene-btn {
+      display: inline-block; padding: 5px 14px; border-radius: 4px; cursor: pointer;
+      font-size: 0.82em; border: 1px solid var(--border); background: var(--bg);
+      color: var(--text); transition: all .15s; user-select: none;
+    }
+    .scene-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .scene-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .viewer-row { display: flex; gap: 16px; margin-top: 12px; }
+    .viewer-col { flex: 1; min-width: 0; }
+    .viewer-col h3 { text-align: center; margin: 0 0 6px 0; font-size: 1em; color: var(--text-secondary); }
+    .viewer-container {
+      width: 100%; height: 500px; border-radius: 8px; overflow: hidden;
+      background: var(--viewer-bg); border: 1px solid #333;
+    }
+
+    .viewer-controls {
+      display: flex; align-items: center; gap: 16px; margin-top: 12px;
+      justify-content: center; font-size: 0.88em; color: var(--text-secondary);
+    }
+    .viewer-controls label { display: flex; align-items: center; gap: 8px; }
+    .viewer-controls input[type="range"] { width: 160px; }
+
+    .viewer-status {
+      text-align: center; padding: 12px; margin-top: 8px;
+      border-radius: 6px; font-size: 0.9em; display: none;
+    }
+    .viewer-status.loading { background: #fff8e1; color: #856404; }
+    .viewer-status.error { background: #fde8e8; color: #b91c1c; }
+
+    @media (max-width: 768px) {
+      .viewer-row { flex-direction: column; }
+      .viewer-container { height: 320px; }
+      .scene-group-label { width: auto; }
+      .hero h1 { font-size: 1.8em; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-alt); border-top: 1px solid var(--border);
+      padding: 32px 24px; text-align: center; font-size: 0.85em; color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <h1>MultiChange3D</h1>
+    <p class="subtitle">A Multi-Scene, Multi-Sensor Dataset for Benchmarking 3D Geometric Change Detection</p>
+    <p class="authors">
+      <a href="https://gseg.igp.ethz.ch/">Zhaoyi Wang</a><sup>1</sup> &middot;
+      <a href="https://3dom.fbk.eu/people/profile/ptrybala">Pawe&#322; Tryba&#322;a</a><sup>2</sup> &middot;
+      <a href="https://gseg.igp.ethz.ch/">Andreas Wieser</a><sup>1</sup> &middot;
+      <a href="https://3dom.fbk.eu/people/profile/remondino">Fabio Remondino</a><sup>2</sup>
+    </p>
+    <p class="authors">
+      <sup>1</sup>&thinsp;ETH Zurich &mdash; Chair of Geosensors and Engineering Geodesy (GSEG) &nbsp;
+      <sup>2</sup>&thinsp;Bruno Kessler Foundation (FBK) &mdash; 3D Optical Metrology (3DOM)
+    </p>
+    <p class="venue">Accepted at ISPRS Annals, proceedings of ISPRS Congress 2026</p>
+    <div class="badges">
+      <a class="btn btn-blue" href="assets/paper/Wang_et_al_2026.pdf" target="_blank" rel="noopener" style="background:#c0392b;">Paper</a>
+      <a class="btn btn-green" href="https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgDhpvAzDGFjQIM4b7Q7ocToAWRefN-sfIQQYwn1BNrt8Ww?e=X2oovT" target="_blank" rel="noopener">Dataset</a>
+      <a class="btn btn-blue" href="https://github.com/3DOM-FBK/multichange3d">Code</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p>
+      3D change detection (3DCD) is essential for monitoring infrastructure, environmental dynamics,
+      and natural hazards. Existing algorithms are typically evaluated on single-scene datasets,
+      and their generalization across varied real-world scenes remains largely unexplored due to the
+      absence of a universal benchmark.
+    </p>
+    <p>
+      <strong>MultiChange3D</strong> provides co-registered pairs of point clouds with ground-truth
+      geometric change labels across <strong>10 diverse scenes</strong> captured by
+      <strong>5 sensor types</strong>, enabling standardized evaluation and cross-scene generalization
+      analysis for 3DCD methods.
+    </p>
+    <div class="fig">
+      <img src="assets/images/dataset_visualization.png"
+           alt="Representative scenes from the MultiChange3D dataset">
+      <p class="fig-caption">Representative scenes from the MultiChange3D dataset.
+        The <em>Bike parking construction</em> scene is colorized by LiDAR intensity; the others by RGB values.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POINT CLOUD EXPLORER ============ -->
+<section id="explorer">
+  <div class="wrap">
+    <h2>Explore the Data</h2>
+    <p>Select a scene to interactively view the co-registered point cloud pair. Both views share the same camera &mdash; rotate, pan, and zoom in either panel.</p>
+
+    <div class="scene-groups">
+      <div class="scene-group">
+        <span class="scene-group-label">RGB-D</span>
+        <span class="scene-btn" data-scene="office">Office</span>
+        <span class="scene-btn" data-scene="open_space_rgbd">Open Space (RGB-D)</span>
+      </div>
+      <div class="scene-group">
+        <span class="scene-group-label">MLS</span>
+        <span class="scene-btn" data-scene="open_space_mls">Open Space (MLS)</span>
+        <span class="scene-btn" data-scene="underground_car_parking">Underground Car Parking</span>
+        <span class="scene-btn" data-scene="bike_parking_construction">Bike Parking Construction</span>
+        <span class="scene-btn" data-scene="vineyard">Vineyard</span>
+      </div>
+      <div class="scene-group">
+        <span class="scene-group-label">TLS</span>
+        <span class="scene-btn" data-scene="classroom">Classroom</span>
+        <span class="scene-btn" data-scene="meeting_room">Meeting Room</span>
+      </div>
+      <div class="scene-group">
+        <span class="scene-group-label">UAV Camera</span>
+        <span class="scene-btn" data-scene="landslide">Landslide</span>
+      </div>
+      <div class="scene-group">
+        <span class="scene-group-label">Airborne</span>
+        <span class="scene-btn" data-scene="city_airborne_camera">City (Camera)</span>
+        <span class="scene-btn" data-scene="city_airborne_lidar">City (LiDAR)</span>
+      </div>
+    </div>
+
+    <div class="viewer-row">
+      <div class="viewer-col">
+        <h3>Epoch 0</h3>
+        <div id="viewer-epoch0" class="viewer-container"></div>
+      </div>
+      <div class="viewer-col">
+        <h3>Epoch 1</h3>
+        <div id="viewer-epoch1" class="viewer-container"></div>
+      </div>
+    </div>
+
+
+    <div id="viewer-status" class="viewer-status"></div>
+  </div>
+</section>
+
+<!-- ============ DATASET SUMMARY ============ -->
+<section id="dataset">
+  <div class="wrap">
+    <h2>Dataset Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Sensor</th><th>Scene</th><th>Approx. Points</th>
+          <th>Avg. Density&nbsp;(m)</th><th>Epochs</th><th>Pairs</th>
+          <th>Extra Features</th><th>Condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>RGB-D</td><td>Office</td><td>2&nbsp;M</td><td>0.002</td><td>4</td><td>6</td><td>RGB</td><td>Indoor, cluttered</td></tr>
+        <tr><td>RGB-D</td><td>Open Space (RGB-D)</td><td>4&nbsp;M</td><td>0.002</td><td>4</td><td>6</td><td>RGB</td><td>Indoor, furniture changes</td></tr>
+        <tr><td>MLS</td><td>Open Space (MLS)</td><td>200&nbsp;k</td><td>0.01</td><td>2</td><td>1</td><td>Intensity</td><td>Indoor, furniture changes</td></tr>
+        <tr><td>MLS</td><td>Underground Car Parking</td><td>24&nbsp;M</td><td>0.01</td><td>3</td><td>3</td><td>Intensity</td><td>Indoor, vehicle motion</td></tr>
+        <tr><td>MLS</td><td>Bike Parking Construction</td><td>5&nbsp;M</td><td>0.02</td><td>4</td><td>6</td><td>Intensity</td><td>Outdoor, construction</td></tr>
+        <tr><td>MLS</td><td>Vineyard*</td><td>5&nbsp;M</td><td>0.02</td><td>3</td><td>3</td><td>&mdash;</td><td>Outdoor, vegetation</td></tr>
+        <tr><td>TLS</td><td>Classroom</td><td>40&nbsp;M</td><td>0.005</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Indoor, furniture changes</td></tr>
+        <tr><td>TLS</td><td>Meeting Room</td><td>170&nbsp;M</td><td>0.003</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Indoor, small-scale</td></tr>
+        <tr><td>UAV Camera</td><td>Landslide**</td><td>20&nbsp;M</td><td>0.04</td><td>4</td><td>4</td><td>RGB</td><td>Outdoor, natural terrain</td></tr>
+        <tr><td>Airborne Camera</td><td>City</td><td>800&nbsp;M</td><td>0.05</td><td>2</td><td>1</td><td>RGB</td><td>Simulated changes, urban</td></tr>
+        <tr><td>Airborne LiDAR</td><td>City</td><td>350&nbsp;M</td><td>0.1</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Outdoor, large-scale urban</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.84em; color:var(--text-secondary);">
+      * No ground-truth change labels.
+      ** Data from <a href="https://doi.org/10.1016/j.enggeo.2024.107850">Lamas-Fernandez et al., 2025</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ BENCHMARK ============ -->
+<section id="benchmark">
+  <div class="wrap">
+    <h2>Benchmark</h2>
+    <p>
+      An initial benchmark of 7 methods from 3 categories, evaluated on three representative scenes:
+      <em>Open Space (RGB-D)</em>, <em>Bike Parking Construction</em>, and <em>Landslide</em>.
+    </p>
+    <ul>
+      <li><strong>Euclidean distance-based:</strong> C2C, M3C2</li>
+      <li><strong>3D displacement estimation-based:</strong> F2S3, Landslide-3D</li>
+      <li><strong>Deep learning classification:</strong> Siamese KPConv, EF-Siamese KPConv, PGN3DCD</li>
+    </ul>
+
+    <h3>Same-scene evaluation (trained and tested per scene)</h3>
+    <table>
+      <thead>
+        <tr><th>Scene</th><th>Method</th><th>Precision</th><th>Recall</th><th>F1</th><th>OA</th><th>mAcc</th><th>mIoU</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="7">Open Space<br>(RGB-D)</td><td>C2C</td><td>95.5</td><td>62.7</td><td>75.4</td><td>88.5</td><td>80.9</td><td>73.2</td></tr>
+        <tr><td>M3C2</td><td>51.8</td><td>55.4</td><td>52.2</td><td>71.7</td><td>67.1</td><td>51.1</td></tr>
+        <tr><td>F2S3</td><td>35.8</td><td>99.9</td><td>51.7</td><td>46.3</td><td>61.5</td><td>29.5</td></tr>
+        <tr><td>Landslide-3D</td><td>40.2</td><td>99.5</td><td>55.9</td><td>54.6</td><td>67.7</td><td>38.0</td></tr>
+        <tr><td>SKPConv</td><td>87.5</td><td>72.5</td><td>75.6</td><td>90.2</td><td>84.0</td><td>76.1</td></tr>
+        <tr><td>EF-SKPConv</td><td>89.0</td><td>94.9</td><td><u>91.4</u></td><td><u>95.8</u></td><td><u>95.6</u></td><td><u>89.9</u></td></tr>
+        <tr><td><strong>PGN3DCD</strong></td><td><strong>97.8</strong></td><td>92.7</td><td><strong>95.0</strong></td><td><strong>97.4</strong></td><td><strong>95.8</strong></td><td><strong>93.4</strong></td></tr>
+
+        <tr><td rowspan="7">Bike Parking<br>Construction</td><td>C2C</td><td>51.5</td><td>50.1</td><td>49.7</td><td>78.0</td><td>68.2</td><td>54.3</td></tr>
+        <tr><td>M3C2</td><td>26.3</td><td>43.6</td><td>32.0</td><td>61.5</td><td>55.3</td><td>38.3</td></tr>
+        <tr><td>F2S3</td><td>29.0</td><td>93.3</td><td>43.8</td><td>49.1</td><td>64.8</td><td>32.0</td></tr>
+        <tr><td>Landslide-3D</td><td>28.0</td><td>96.7</td><td>43.1</td><td>46.0</td><td>64.0</td><td>29.4</td></tr>
+        <tr><td>SKPConv</td><td>85.8</td><td>45.9</td><td>59.2</td><td>86.3</td><td>72.0</td><td>63.4</td></tr>
+        <tr><td>EF-SKPConv</td><td><u>89.9</u></td><td>60.7</td><td><u>72.1</u></td><td><u>89.9</u></td><td><u>79.6</u></td><td><u>72.5</u></td></tr>
+        <tr><td><strong>PGN3DCD</strong></td><td><strong>94.0</strong></td><td>65.3</td><td><strong>76.8</strong></td><td><strong>91.5</strong></td><td><strong>82.1</strong></td><td><strong>76.2</strong></td></tr>
+
+        <tr><td rowspan="7">Landslide</td><td>C2C</td><td>85.5</td><td>91.9</td><td>88.4</td><td>95.6</td><td>94.2</td><td>87.2</td></tr>
+        <tr><td>M3C2</td><td>83.8</td><td>84.6</td><td>84.2</td><td>94.5</td><td>90.6</td><td>83.1</td></tr>
+        <tr><td>F2S3</td><td>31.2</td><td>98.1</td><td>47.3</td><td>62.1</td><td>76.3</td><td>42.7</td></tr>
+        <tr><td>Landslide-3D</td><td>37.1</td><td>95.8</td><td>53.4</td><td>71.0</td><td>80.8</td><td>50.9</td></tr>
+        <tr><td><strong>SKPConv</strong></td><td><u>97.0</u></td><td>93.7</td><td><strong>95.3</strong></td><td><strong>98.4</strong></td><td><strong>96.5</strong></td><td><strong>94.5</strong></td></tr>
+        <tr><td>EF-SKPConv</td><td><strong>97.8</strong></td><td>90.6</td><td>94.0</td><td><u>98.0</u></td><td>95.1</td><td>93.2</td></tr>
+        <tr><td>PGN3DCD</td><td>96.1</td><td>92.4</td><td><u>94.1</u></td><td><u>98.0</u></td><td><u>95.8</u></td><td><u>93.3</u></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key Findings</h3>
+    <ul>
+      <li>Deep learning methods achieve the best scores when trained and tested on the same scene.</li>
+      <li>Cross-scene generalization remains a significant challenge for learned approaches (OA drops of 16&ndash;65 pp).</li>
+      <li>Euclidean distance-based methods (C2C, M3C2) show stable performance across diverse scenes.</li>
+      <li>3D displacement estimation-based methods can detect large changes but struggle with planar structures.</li>
+    </ul>
+
+    <h3>Qualitative Results</h3>
+    <div class="fig">
+      <img src="assets/images/qualitative_open_space.png" alt="Qualitative: Open Space (RGB-D)">
+      <p class="fig-caption">Open Space (RGB-D), epoch pair 0-2.</p>
+    </div>
+    <div class="fig">
+      <img src="assets/images/qualitative_bike_parking.png" alt="Qualitative: Bike Parking Construction">
+      <p class="fig-caption">Bike Parking Construction, epoch pair 0-2.</p>
+    </div>
+    <div class="fig">
+      <img src="assets/images/qualitative_landslide.png" alt="Qualitative: Landslide">
+      <p class="fig-caption">Landslide, epoch pair 0-1.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD ============ -->
+<section id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p>Each scene folder contains co-registered point cloud pairs and ground-truth labels for all available epoch pairs. Point clouds are provided in <code>.ply</code> format.</p>
+    <table>
+      <thead><tr><th>Scene</th><th>Sensor</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Office</td><td>RGB-D</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Office?csf=1&amp;web=1&amp;e=mv2t2W" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Open Space (RGB-D)</td><td>RGB-D</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Open_space?csf=1&amp;web=1&amp;e=yNfTHk" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Open Space (MLS)</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Open_space?csf=1&amp;web=1&amp;e=abc4sC" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Underground Car Parking</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Underground_car_parking?csf=1&amp;web=1&amp;e=EvwiSq" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Bike Parking Construction</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Bike_parking_construction?csf=1&amp;web=1&amp;e=KlYuPZ" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Vineyard</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Vineyard?csf=1&amp;web=1&amp;e=rVWt1n" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Classroom</td><td>TLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Classroom?csf=1&amp;web=1&amp;e=abGWOH" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Meeting Room</td><td>TLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Meeting_room?csf=1&amp;web=1&amp;e=SgQExS" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>Landslide</td><td>UAV Camera</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/3_UAV_Camera/Landslide?csf=1&amp;web=1&amp;e=Fky0Wn" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>City (Airborne Camera)</td><td>Airborne Camera</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/4_Airborne_Camera/Graz_simulated_changes?csf=1&amp;web=1&amp;e=FEg2o3" target="_blank" rel="noopener">Download</a></td></tr>
+        <tr><td>City (Airborne LiDAR)</td><td>Airborne LiDAR</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/5_Airborne_LiDAR/Klagenfurt?csf=1&amp;web=1&amp;e=L9dDXA" target="_blank" rel="noopener">Download</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ CITATION ============ -->
+<section id="citation">
+  <div class="wrap">
+    <h2>Citation</h2>
+    <p><em>Accepted at ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, proceedings of the ISPRS Congress 2026.</em></p>
+    <div class="bib-block">@article{wang2026multichange3d,
+  title     = {{MultiChange3D}: A Multi-Scene, Multi-Sensor Dataset for Benchmarking
+               3D Geometric Change Detection},
+  author    = {Wang, Zhaoyi and Tryba{\l}a, Pawe{\l} and Wieser, Andreas
+               and Remondino, Fabio},
+  journal   = {ISPRS Ann. Photogramm. Remote Sens. Spatial Inf. Sci.},
+  year      = {2026}
+}</div>
+  </div>
+</section>
+
+<!-- ============ LICENSE ============ -->
+<section id="license">
+  <div class="wrap">
+    <h2>License</h2>
+    <p>
+      The data is licensed under the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+      The code is licensed under the <a href="https://github.com/3DOM-FBK/multichange3d/blob/main/LICENSE">MIT License</a>.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <a href="https://gseg.igp.ethz.ch/">ETH Zurich (GSEG)</a> &nbsp;&middot;&nbsp;
+    <a href="https://3dom.fbk.eu/">Bruno Kessler Foundation (3DOM-FBK)</a>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/TrackballControls.js"
+        crossorigin="anonymous"></script>
+<script src="assets/js/pointcloud-viewer.js?v=6"></script>
+</body>
+</html>
