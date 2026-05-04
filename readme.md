@@ -15,7 +15,6 @@
 <p align="center">
   <a href="https://3dom-fbk.github.io/multichange3d/"><img src="https://img.shields.io/badge/Project-Page-informational" alt="Project Page"></a>
   <a href="https://github.com/3DOM-FBK/multichange3d/blob/main/docs/assets/paper/Wang_et_al_2026.pdf"><img src="https://img.shields.io/badge/Paper-PDF-red?logo=adobeacrobatreader" alt="Paper PDF"></a>
-  <a href="https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgDhpvAzDGFjQIM4b7Q7ocToAWRefN-sfIQQYwn1BNrt8Ww?e=X2oovT"><img src="https://img.shields.io/badge/Dataset-Download-green?logo=microsoftsharepoint" alt="Dataset Download"></a>
 </p>
 
 <p align="center">
@@ -40,21 +39,23 @@ MultiChange3D is joint work between [ETH Zurich (GSEG)](https://gseg.igp.ethz.ch
 
 ---
 
-## Dataset Summary
+## Dataset
 
-| Sensor Type | Scene | Approx. Points | Avg. Density (m) | Epochs | Pairs | Extra Features | Condition |
-|---|---|---|---|---|---|---|---|
-| RGB-D | Office | 2 M | 0.002 | 4 | 6 | RGB | Indoor, cluttered |
-| RGB-D | Open space (RGB-D) | 4 M | 0.002 | 4 | 6 | RGB | Indoor, furniture changes |
-| MLS | Open space (MLS) | 200 k | 0.01 | 2 | 1 | Intensity | Indoor, furniture changes |
-| MLS | Underground car parking | 24 M | 0.01 | 3 | 3 | Intensity | Indoor, vehicle motion |
-| MLS | Bike parking construction | 5 M | 0.02 | 4 | 6 | Intensity | Outdoor, construction |
-| MLS | Vineyard* | 5 M | 0.02 | 3 | 3 | -- | Outdoor, vegetation |
-| TLS | Classroom | 40 M | 0.005 | 2 | 1 | Intensity, RGB | Indoor, furniture changes |
-| TLS | Meeting room | 170 M | 0.003 | 2 | 1 | Intensity, RGB | Indoor, small-scale |
-| UAV Camera | Landslide** | 20 M | 0.04 | 4 | 4 | RGB | Outdoor, natural terrain |
-| Airborne Camera | City | 800 M | 0.05 | 2 | 1 | RGB | Simulated changes, urban |
-| Airborne LiDAR | City | 350 M | 0.1 | 2 | 1 | Intensity, RGB | Outdoor, large-scale urban |
+Each scene folder contains co-registered point cloud pairs and ground-truth labels for all available epoch pairs. Point clouds are provided in `.ply` format.
+
+| Sensor Type | Scene | Approx. Points | Avg. Density (m) | Epochs | Pairs | Extra Features | Condition | Download |
+|---|---|---|---|---|---|---|---|---|
+| RGB-D | Office | 2 M | 0.002 | 4 | 6 | RGB | Indoor, cluttered | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Office?csf=1&web=1&e=mv2t2W) |
+| RGB-D | Open space (RGB-D) | 4 M | 0.002 | 4 | 6 | RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Open_space?csf=1&web=1&e=yNfTHk) |
+| MLS | Open space (MLS) | 200 k | 0.01 | 2 | 1 | Intensity | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Open_space?csf=1&web=1&e=abc4sC) |
+| MLS | Underground car parking | 24 M | 0.01 | 3 | 3 | Intensity | Indoor, vehicle motion | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Underground_car_parking?csf=1&web=1&e=EvwiSq) |
+| MLS | Bike parking construction | 5 M | 0.02 | 4 | 6 | Intensity | Outdoor, construction | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Bike_parking_construction?csf=1&web=1&e=KlYuPZ) |
+| MLS | Vineyard* | 5 M | 0.02 | 3 | 3 | -- | Outdoor, vegetation | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Vineyard?csf=1&web=1&e=rVWt1n) |
+| TLS | Classroom | 40 M | 0.005 | 2 | 1 | Intensity, RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Classroom?csf=1&web=1&e=abGWOH) |
+| TLS | Meeting room | 170 M | 0.003 | 2 | 1 | Intensity, RGB | Indoor, small-scale | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Meeting_room?csf=1&web=1&e=SgQExS) |
+| UAV Camera | Landslide** | 20 M | 0.04 | 4 | 4 | RGB | Outdoor, natural terrain | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/3_UAV_Camera/Landslide?csf=1&web=1&e=Fky0Wn) |
+| Airborne Camera | City | 800 M | 0.05 | 2 | 1 | RGB | Simulated changes, urban | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/4_Airborne_Camera/Graz_simulated_changes?csf=1&web=1&e=FEg2o3) |
+| Airborne LiDAR | City | 350 M | 0.1 | 2 | 1 | Intensity, RGB | Outdoor, large-scale urban | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/5_Airborne_LiDAR/Klagenfurt?csf=1&web=1&e=L9dDXA) |
 
 \* No ground-truth change labels. \*\* Data from [Galve et al., 2025](https://doi.org/10.1007/s10346-024-02449-9).
 
@@ -94,26 +95,6 @@ Key findings:
 - Deep learning methods achieve the best scores when trained and tested on the same scene.
 - Cross-scene generalization remains a significant challenge for learning-based approaches (OA drops of 16--65 pp).
 - Euclidean distance-based methods (C2C, M3C2) show stable performance across scenes, but are weak in detecting overlapping changes and lack context understanding.
-
----
-
-## Download
-
-Each scene folder contains co-registered point cloud pairs and ground-truth labels for all available epoch pairs. Point clouds are provided in `.ply` format.
-
-| Scene | Sensor | Link |
-|---|---|---|
-| Office | RGB-D | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Office?csf=1&web=1&e=mv2t2W) |
-| Open space (RGB-D) | RGB-D | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Open_space?csf=1&web=1&e=yNfTHk) |
-| Open space (MLS) | MLS | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Open_space?csf=1&web=1&e=abc4sC) |
-| Underground car parking | MLS | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Underground_car_parking?csf=1&web=1&e=EvwiSq) |
-| Bike parking construction | MLS | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Bike_parking_construction?csf=1&web=1&e=KlYuPZ) |
-| Vineyard | MLS | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Vineyard?csf=1&web=1&e=rVWt1n) |
-| Classroom | TLS | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Classroom?csf=1&web=1&e=abGWOH) |
-| Meeting room | TLS | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Meeting_room?csf=1&web=1&e=SgQExS) |
-| Landslide | UAV Camera | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/3_UAV_Camera/Landslide?csf=1&web=1&e=Fky0Wn) |
-| City (Airborne Camera) | Airborne Camera | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/4_Airborne_Camera/Graz_simulated_changes?csf=1&web=1&e=FEg2o3) |
-| City (Airborne LiDAR) | Airborne LiDAR | [Download](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/5_Airborne_LiDAR/Klagenfurt?csf=1&web=1&e=L9dDXA) |
 
 ---
 

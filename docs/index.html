@@ -146,7 +146,6 @@
     <p class="venue">Accepted at ISPRS Annals, proceedings of ISPRS Congress 2026</p>
     <div class="badges">
       <a class="btn btn-blue" href="assets/paper/Wang_et_al_2026.pdf" target="_blank" rel="noopener" style="background:#c0392b;">Paper</a>
-      <a class="btn btn-green" href="https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgDhpvAzDGFjQIM4b7Q7ocToAWRefN-sfIQQYwn1BNrt8Ww?e=X2oovT" target="_blank" rel="noopener">Dataset</a>
       <a class="btn btn-blue" href="https://github.com/3DOM-FBK/multichange3d">Code</a>
     </div>
   </div>
@@ -230,35 +229,36 @@
   </div>
 </section>
 
-<!-- ============ DATASET SUMMARY ============ -->
+<!-- ============ DATASET ============ -->
 <section id="dataset">
   <div class="wrap">
-    <h2>Dataset Summary</h2>
+    <h2>Dataset</h2>
+    <p>Each scene folder contains co-registered point cloud pairs and ground-truth labels for all available epoch pairs. Point clouds are provided in <code>.ply</code> format.</p>
     <table>
       <thead>
         <tr>
           <th>Sensor</th><th>Scene</th><th>Approx. Points</th>
           <th>Avg. Density&nbsp;(m)</th><th>Epochs</th><th>Pairs</th>
-          <th>Extra Features</th><th>Condition</th>
+          <th>Extra Features</th><th>Condition</th><th>Download</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>RGB-D</td><td>Office</td><td>2&nbsp;M</td><td>0.002</td><td>4</td><td>6</td><td>RGB</td><td>Indoor, cluttered</td></tr>
-        <tr><td>RGB-D</td><td>Open Space (RGB-D)</td><td>4&nbsp;M</td><td>0.002</td><td>4</td><td>6</td><td>RGB</td><td>Indoor, furniture changes</td></tr>
-        <tr><td>MLS</td><td>Open Space (MLS)</td><td>200&nbsp;k</td><td>0.01</td><td>2</td><td>1</td><td>Intensity</td><td>Indoor, furniture changes</td></tr>
-        <tr><td>MLS</td><td>Underground Car Parking</td><td>24&nbsp;M</td><td>0.01</td><td>3</td><td>3</td><td>Intensity</td><td>Indoor, vehicle motion</td></tr>
-        <tr><td>MLS</td><td>Bike Parking Construction</td><td>5&nbsp;M</td><td>0.02</td><td>4</td><td>6</td><td>Intensity</td><td>Outdoor, construction</td></tr>
-        <tr><td>MLS</td><td>Vineyard*</td><td>5&nbsp;M</td><td>0.02</td><td>3</td><td>3</td><td>&mdash;</td><td>Outdoor, vegetation</td></tr>
-        <tr><td>TLS</td><td>Classroom</td><td>40&nbsp;M</td><td>0.005</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Indoor, furniture changes</td></tr>
-        <tr><td>TLS</td><td>Meeting Room</td><td>170&nbsp;M</td><td>0.003</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Indoor, small-scale</td></tr>
-        <tr><td>UAV Camera</td><td>Landslide**</td><td>20&nbsp;M</td><td>0.04</td><td>4</td><td>4</td><td>RGB</td><td>Outdoor, natural terrain</td></tr>
-        <tr><td>Airborne Camera</td><td>City</td><td>800&nbsp;M</td><td>0.05</td><td>2</td><td>1</td><td>RGB</td><td>Simulated changes, urban</td></tr>
-        <tr><td>Airborne LiDAR</td><td>City</td><td>350&nbsp;M</td><td>0.1</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Outdoor, large-scale urban</td></tr>
+        <tr><td>RGB-D</td><td>Office</td><td>2&nbsp;M</td><td>0.002</td><td>4</td><td>6</td><td>RGB</td><td>Indoor, cluttered</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Office?csf=1&amp;web=1&amp;e=mv2t2W" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>RGB-D</td><td>Open Space (RGB-D)</td><td>4&nbsp;M</td><td>0.002</td><td>4</td><td>6</td><td>RGB</td><td>Indoor, furniture changes</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Open_space?csf=1&amp;web=1&amp;e=yNfTHk" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>MLS</td><td>Open Space (MLS)</td><td>200&nbsp;k</td><td>0.01</td><td>2</td><td>1</td><td>Intensity</td><td>Indoor, furniture changes</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Open_space?csf=1&amp;web=1&amp;e=abc4sC" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>MLS</td><td>Underground Car Parking</td><td>24&nbsp;M</td><td>0.01</td><td>3</td><td>3</td><td>Intensity</td><td>Indoor, vehicle motion</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Underground_car_parking?csf=1&amp;web=1&amp;e=EvwiSq" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>MLS</td><td>Bike Parking Construction</td><td>5&nbsp;M</td><td>0.02</td><td>4</td><td>6</td><td>Intensity</td><td>Outdoor, construction</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Bike_parking_construction?csf=1&amp;web=1&amp;e=KlYuPZ" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>MLS</td><td>Vineyard*</td><td>5&nbsp;M</td><td>0.02</td><td>3</td><td>3</td><td>&mdash;</td><td>Outdoor, vegetation</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Vineyard?csf=1&amp;web=1&amp;e=rVWt1n" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>TLS</td><td>Classroom</td><td>40&nbsp;M</td><td>0.005</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Indoor, furniture changes</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Classroom?csf=1&amp;web=1&amp;e=abGWOH" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>TLS</td><td>Meeting Room</td><td>170&nbsp;M</td><td>0.003</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Indoor, small-scale</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Meeting_room?csf=1&amp;web=1&amp;e=SgQExS" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>UAV Camera</td><td>Landslide**</td><td>20&nbsp;M</td><td>0.04</td><td>4</td><td>4</td><td>RGB</td><td>Outdoor, natural terrain</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/3_UAV_Camera/Landslide?csf=1&amp;web=1&amp;e=Fky0Wn" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>Airborne Camera</td><td>City</td><td>800&nbsp;M</td><td>0.05</td><td>2</td><td>1</td><td>RGB</td><td>Simulated changes, urban</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/4_Airborne_Camera/Graz_simulated_changes?csf=1&amp;web=1&amp;e=FEg2o3" target="_blank" rel="noopener">Link</a></td></tr>
+        <tr><td>Airborne LiDAR</td><td>City</td><td>350&nbsp;M</td><td>0.1</td><td>2</td><td>1</td><td>Intensity,&nbsp;RGB</td><td>Outdoor, large-scale urban</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/5_Airborne_LiDAR/Klagenfurt?csf=1&amp;web=1&amp;e=L9dDXA" target="_blank" rel="noopener">Link</a></td></tr>
       </tbody>
     </table>
     <p style="font-size:0.84em; color:var(--text-secondary);">
       * No ground-truth change labels.
-      ** Data from <a href="https://doi.org/10.1016/j.enggeo.2024.107850">Lamas-Fernandez et al., 2025</a>.
+      ** Data from <a href="https://doi.org/10.1007/s10346-024-02449-9">Galve et al., 2025</a>.
     </p>
   </div>
 </section>
@@ -330,30 +330,6 @@
       <img src="assets/images/qualitative_landslide.png" alt="Qualitative: Landslide">
       <p class="fig-caption">Landslide, epoch pair 0-1.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ DOWNLOAD ============ -->
-<section id="download">
-  <div class="wrap">
-    <h2>Download</h2>
-    <p>Each scene folder contains co-registered point cloud pairs and ground-truth labels for all available epoch pairs. Point clouds are provided in <code>.ply</code> format.</p>
-    <table>
-      <thead><tr><th>Scene</th><th>Sensor</th><th>Link</th></tr></thead>
-      <tbody>
-        <tr><td>Office</td><td>RGB-D</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Office?csf=1&amp;web=1&amp;e=mv2t2W" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Open Space (RGB-D)</td><td>RGB-D</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Open_space?csf=1&amp;web=1&amp;e=yNfTHk" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Open Space (MLS)</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Open_space?csf=1&amp;web=1&amp;e=abc4sC" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Underground Car Parking</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Underground_car_parking?csf=1&amp;web=1&amp;e=EvwiSq" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Bike Parking Construction</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Bike_parking_construction?csf=1&amp;web=1&amp;e=KlYuPZ" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Vineyard</td><td>MLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Vineyard?csf=1&amp;web=1&amp;e=rVWt1n" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Classroom</td><td>TLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Classroom?csf=1&amp;web=1&amp;e=abGWOH" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Meeting Room</td><td>TLS</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Meeting_room?csf=1&amp;web=1&amp;e=SgQExS" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>Landslide</td><td>UAV Camera</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/3_UAV_Camera/Landslide?csf=1&amp;web=1&amp;e=Fky0Wn" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>City (Airborne Camera)</td><td>Airborne Camera</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/4_Airborne_Camera/Graz_simulated_changes?csf=1&amp;web=1&amp;e=FEg2o3" target="_blank" rel="noopener">Download</a></td></tr>
-        <tr><td>City (Airborne LiDAR)</td><td>Airborne LiDAR</td><td><a href="https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/5_Airborne_LiDAR/Klagenfurt?csf=1&amp;web=1&amp;e=L9dDXA" target="_blank" rel="noopener">Download</a></td></tr>
-      </tbody>
-    </table>
   </div>
 </section>
 
