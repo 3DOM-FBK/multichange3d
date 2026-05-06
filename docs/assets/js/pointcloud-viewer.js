@@ -15,7 +15,7 @@
     { id: "meeting_room",              name: "Meeting Room",             sensor: "TLS",             rx:  50, ry: -35, rz: -150 },
     { id: "landslide",                 name: "Landslide",                sensor: "UAV Camera",      rx:  60, ry:  30, rz:  170 },
     { id: "city_airborne_camera",      name: "City (Airborne Camera)",   sensor: "Airborne Camera", rx:  45, ry:  35, rz:  150 },
-    { id: "city_airborne_lidar",       name: "City (Airborne LiDAR)",    sensor: "Airborne LiDAR",  rx:  45, ry:  35, rz:  150 },
+    { id: "city_airborne_lidar",       name: "City (Airborne LiDAR)",    sensor: "Airborne LiDAR",  rx: -50, ry:  30, rz:   20 },
   ];
 
   var BASE_PATH = "assets/clouds";
