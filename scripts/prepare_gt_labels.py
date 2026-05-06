@@ -56,11 +56,10 @@ def read_ply_points_flexible(ply_path):
         rgb = np.vstack([v["r"], v["g"], v["b"]]).T.astype(np.float32)
 
     # intensity
-    if rgb is None:
-        for n in names:
-            if "intensity" in n.lower():
-                intensity = np.asarray(v[n]).astype(np.float32)
-                break
+    for n in names:
+        if "intensity" in n.lower():
+            intensity = np.asarray(v[n]).astype(np.float32)
+            break
 
     # fallback
     if rgb is None and intensity is None:
@@ -79,7 +78,8 @@ def write_ply_auto(save_path, xyz, rgb=None, intensity=None, feat=None, name_fea
 
     if intensity is not None:
         dtype_list.append(("intensity", "f4"))
-    else:
+
+    if rgb is not None:
         dtype_list += [("red", "u1"), ("green", "u1"), ("blue", "u1")]
 
     if feat is not None:
@@ -91,7 +91,8 @@ def write_ply_auto(save_path, xyz, rgb=None, intensity=None, feat=None, name_fea
 
     if intensity is not None:
         vertex_data["intensity"] = intensity.astype(np.float32)
-    else:
+
+    if rgb is not None:
         rgb = np.clip(rgb, 0, 255).astype(np.uint8)
         vertex_data["red"], vertex_data["green"], vertex_data["blue"] = rgb.T
 
@@ -117,12 +118,16 @@ def concat_data(d1, f1, d2, f2):
     xyz = np.vstack([d1["xyz"], d2["xyz"]])
     feat = np.vstack([f1, f2]).flatten()
 
-    if d1["intensity"] is not None:
-        intensity = np.concatenate([d1["intensity"], d2["intensity"]])
-        return xyz, None, intensity, feat
-    else:
+    rgb = None
+    intensity = None
+
+    if d1["rgb"] is not None and d2["rgb"] is not None:
         rgb = np.vstack([d1["rgb"], d2["rgb"]])
-        return xyz, rgb, None, feat
+
+    if d1["intensity"] is not None and d2["intensity"] is not None:
+        intensity = np.concatenate([d1["intensity"], d2["intensity"]])
+
+    return xyz, rgb, intensity, feat
 
 
 def main():
