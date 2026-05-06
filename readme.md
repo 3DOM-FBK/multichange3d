@@ -14,8 +14,10 @@
 
 <p align="center">
   <a href="https://3dom-fbk.github.io/multichange3d/"><img src="https://img.shields.io/badge/Project-Page-informational" alt="Project Page"></a>
+
   <a href="https://github.com/3DOM-FBK/multichange3d/blob/main/docs/assets/paper/Wang_et_al_2026.pdf"><img src="https://img.shields.io/badge/Paper-PDF-red?logo=adobeacrobatreader" alt="Paper PDF"></a>
   <a href="https://doi.org/10.3929/ethz-c-000799657"><img src="https://img.shields.io/badge/DOI-10.3929%2Fethz--c--000799657-orange" alt="DOI"></a>
+
 </p>
 
 <p align="center">
