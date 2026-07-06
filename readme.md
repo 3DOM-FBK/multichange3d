@@ -47,17 +47,17 @@ Each scene folder contains co-registered point cloud pairs and ground-truth labe
 
 | Sensor Type | Scene | Approx. Points | Avg. Density (m) | Epochs | Pairs | Extra Features | Condition | Download |
 |---|---|---|---|---|---|---|---|---|
-| RGB-D | Office | 2 M | 0.002 | 4 | 6 | RGB | Indoor, cluttered | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Office?csf=1&web=1&e=mv2t2W) |
-| RGB-D | Open space (RGB-D) | 4 M | 0.002 | 4 | 6 | RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/0_RGBD/Open_space?csf=1&web=1&e=yNfTHk) |
-| MLS | Open space (MLS) | 200 k | 0.01 | 2 | 1 | Intensity | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Open_space?csf=1&web=1&e=abc4sC) |
-| MLS | Underground car parking | 24 M | 0.01 | 3 | 3 | Intensity | Indoor, vehicle motion | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Underground_car_parking?csf=1&web=1&e=EvwiSq) |
-| MLS | Bike parking construction | 5 M | 0.02 | 4 | 6 | Intensity | Outdoor, construction | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Bike_parking_construction?csf=1&web=1&e=KlYuPZ) |
-| MLS | Vineyard* | 5 M | 0.02 | 3 | 3 | -- | Outdoor, vegetation | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/1_MLS/Vineyard?csf=1&web=1&e=rVWt1n) |
-| TLS | Classroom | 40 M | 0.005 | 2 | 1 | Intensity, RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Classroom?csf=1&web=1&e=abGWOH) |
-| TLS | Meeting room | 170 M | 0.003 | 2 | 1 | Intensity, RGB | Indoor, small-scale | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/2_TLS/Meeting_room?csf=1&web=1&e=SgQExS) |
-| UAV Camera | Landslide** | 20 M | 0.04 | 4 | 4 | RGB | Outdoor, natural terrain | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/3_UAV_Camera/Landslide?csf=1&web=1&e=Fky0Wn) |
-| Airborne Camera | City | 800 M | 0.05 | 2 | 1 | RGB | Simulated changes, urban | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/4_Airborne_Camera/Graz_simulated_changes?csf=1&web=1&e=FEg2o3) |
-| Airborne LiDAR | City | 350 M | 0.1 | 2 | 1 | Intensity, RGB | Outdoor, large-scale urban | [Link](https://fbk.sharepoint.com/:f:/r/sites/BENCHMARKS/Shared%20Documents/MultiChange3D/5_Airborne_LiDAR/Klagenfurt?csf=1&web=1&e=L9dDXA) |
+| RGB-D | Office | 2 M | 0.002 | 4 | 6 | RGB | Indoor, cluttered | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgBe2hyHEJKAS5b8DEWTXuJSAfCePwIHO4EXdSFaT8IIqOA?e=G4Z4vE) |
+| RGB-D | Open space (RGB-D) | 4 M | 0.002 | 4 | 6 | RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgCzHpZzgXjDQI1O1DeZniyZAatqJWchrICnsM1KF7eV2og?e=NCmHOp) |
+| MLS | Open space (MLS) | 200 k | 0.01 | 2 | 1 | Intensity | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgDilRVlX6nlTKptZ5sDewmxAbqESXPLwxTto6qc1k8iAMs?e=r7eexb) |
+| MLS | Underground car parking | 24 M | 0.01 | 3 | 3 | Intensity | Indoor, vehicle motion | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgBrYnc_QGQuRoKip_a13b8rAfk7RUbmpAZZiJ4nPyL6G2U?e=grLaBM) |
+| MLS | Bike parking construction | 5 M | 0.02 | 4 | 6 | Intensity | Outdoor, construction | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgAKqkO1sEXISr1VzGiVNBITATbe2fCNp-Y3Tj-ng8jos9M?e=D0I1CG) |
+| MLS | Vineyard* | 5 M | 0.02 | 3 | 3 | -- | Outdoor, vegetation | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgBLP0nApwRaQ7QYbxX63eSAASdnQZJ42V8_a_XWVZDmiF0?e=QeQLxL) |
+| TLS | Classroom | 40 M | 0.005 | 2 | 1 | Intensity, RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgAuwjmYpTmmRbd6cnJe41FYAXRd6x1fL9aGdJyeTunBJBU?e=UtcfUd) |
+| TLS | Meeting room | 170 M | 0.003 | 2 | 1 | Intensity, RGB | Indoor, small-scale | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgCuAiD3taIvR4L77S5DreNvASFtCzCNAMYl3kjRdigdv1s?e=eNp9OI) |
+| UAV Camera | Landslide** | 20 M | 0.04 | 4 | 4 | RGB | Outdoor, natural terrain | [Link](hhttps://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgAVn2ttlUoxSJHHFLNob9-xARTfcT_7RkLzWTjlMO6W_rs?e=0TgMqr) |
+| Airborne Camera | City | 800 M | 0.05 | 2 | 1 | RGB | Simulated changes, urban | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgDVOP2l-c2aSpzs86cw3jvRAaPr90G_x2UaNiwOwKtLYRk?e=7w2q9i) |
+| Airborne LiDAR | City | 350 M | 0.1 | 2 | 1 | Intensity, RGB | Outdoor, large-scale urban | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgCzyOx0r1EhR4d6h2sZMqEYAQzxHPSZLx8lq7Iqz3y2SZ8?e=oxaaqj) |
 
 \* No ground-truth change labels. \*\* Data from [Galve et al., 2025](https://doi.org/10.1007/s10346-024-02449-9).
 
