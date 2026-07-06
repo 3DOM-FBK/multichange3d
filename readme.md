@@ -13,9 +13,9 @@
 </p>
 
 <p align="center">
-  <a href="https://3dom-fbk.github.io/multichange3d/"><img src="https://img.shields.io/badge/Project-Page-informational" alt="Project Page"></a>
-  <a href="https://github.com/3DOM-FBK/multichange3d/blob/main/docs/assets/paper/Wang_et_al_2026.pdf"><img src="https://img.shields.io/badge/Paper-PDF-red?logo=adobeacrobatreader" alt="Paper PDF"></a>
-  <a href="https://doi.org/10.3929/ethz-c-000799657"><img src="https://img.shields.io/badge/DOI-10.3929%2Fethz--c--000799657-orange" alt="DOI"></a>
+  <a href="https://3dom-fbk.github.io/multichange3d/"><img src="https://img.shields.io/badge/Project-Page-e05d44?labelColor=555" alt="Project Page"></a>
+  <a href="https://isprs-annals.copernicus.org/articles/XI-2-2026/639/2026/"><img src="https://img.shields.io/badge/ISPRS%20Annals-Paper%20PDF-informational?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA1NCI%2BPGVsbGlwc2UgY3g9IjQ4IiBjeT0iMjciIHJ4PSIzNCIgcnk9IjE2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0M0IwMkEiIHN0cm9rZS13aWR0aD0iNCIvPjxlbGxpcHNlIGN4PSI0OCIgY3k9IjI3IiByeD0iOCIgcnk9IjM2IiB0cmFuc2Zvcm09InJvdGF0ZSgyNSA0OCAyNykiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGNkEwMCIgc3Ryb2tlLXdpZHRoPSIzIi8%2BPHRleHQgeD0iOCIgeT0iMzciIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMEE2NkMyIj5pc3ByczwvdGV4dD48L3N2Zz4%3D&logoWidth=40" alt="Paper PDF"></a>
+  <a href="https://doi.org/10.5194/isprs-annals-XI-2-2026-639-2026"><img src="https://img.shields.io/badge/DOI-10.5194%2Fisprs--annals--XI--2--2026--639--2026-orange" alt="DOI"></a>
 
 </p>
 
@@ -55,7 +55,7 @@ Each scene folder contains co-registered point cloud pairs and ground-truth labe
 | MLS | Vineyard* | 5 M | 0.02 | 3 | 3 | -- | Outdoor, vegetation | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgBLP0nApwRaQ7QYbxX63eSAASdnQZJ42V8_a_XWVZDmiF0?e=QeQLxL) |
 | TLS | Classroom | 40 M | 0.005 | 2 | 1 | Intensity, RGB | Indoor, furniture changes | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgAuwjmYpTmmRbd6cnJe41FYAXRd6x1fL9aGdJyeTunBJBU?e=UtcfUd) |
 | TLS | Meeting room | 170 M | 0.003 | 2 | 1 | Intensity, RGB | Indoor, small-scale | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgCuAiD3taIvR4L77S5DreNvASFtCzCNAMYl3kjRdigdv1s?e=eNp9OI) |
-| UAV Camera | Landslide** | 20 M | 0.04 | 4 | 4 | RGB | Outdoor, natural terrain | [Link](hhttps://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgAVn2ttlUoxSJHHFLNob9-xARTfcT_7RkLzWTjlMO6W_rs?e=0TgMqr) |
+| UAV Camera | Landslide** | 20 M | 0.04 | 4 | 4 | RGB | Outdoor, natural terrain | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgAVn2ttlUoxSJHHFLNob9-xARTfcT_7RkLzWTjlMO6W_rs?e=0TgMqr) |
 | Airborne Camera | City | 800 M | 0.05 | 2 | 1 | RGB | Simulated changes, urban | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgDVOP2l-c2aSpzs86cw3jvRAaPr90G_x2UaNiwOwKtLYRk?e=7w2q9i) |
 | Airborne LiDAR | City | 350 M | 0.1 | 2 | 1 | Intensity, RGB | Outdoor, large-scale urban | [Link](https://fbk.sharepoint.com/:f:/s/BENCHMARKS/IgCzyOx0r1EhR4d6h2sZMqEYAQzxHPSZLx8lq7Iqz3y2SZ8?e=oxaaqj) |
 
@@ -123,7 +123,11 @@ If you use this dataset in your research, please cite:
   title     = {{MultiChange3D}: A Multi-Scene, Multi-Sensor Dataset for Benchmarking 3D Geometric Change Detection},
   author    = {Wang, Zhaoyi and Tryba{\l}a, Pawe{\l} and Wieser, Andreas and Remondino, Fabio},
   journal   = {ISPRS Ann. Photogramm. Remote Sens. Spatial Inf. Sci.},
-  year      = {2026}
+  year      = {2026},
+  volume    = {XI-2-2026},
+  pages     = {639--646},
+  URL       = {https://isprs-annals.copernicus.org/articles/XI-2-2026/639/2026/},
+  DOI       = {10.5194/isprs-annals-XI-2-2026-639-2026}
 }
 ```
 
