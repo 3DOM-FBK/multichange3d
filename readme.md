@@ -32,8 +32,8 @@
 **MultiChange3D** is a multi-scene, multi-sensor 3D change detection dataset for identifying geometric changes in 3D space. The dataset provides co-registered pairs of point clouds with ground-truth geometric change labels, enabling standardized evaluation across different methods.
 
 The dataset covers:
-- **5 sensor types**: RGB-D, MLS, TLS, UAV Camera, Airborne LiDAR, and Airborne Camera
-- **10 scenes** spanning indoor, outdoor, and city-scale environments
+- **6 sensor types**: RGB-D, MLS, TLS, UAV Camera, Airborne LiDAR, and Airborne Camera
+- **11 scenes** spanning indoor, outdoor, and city-scale environments
 - **2 to 4 epochs** per scene, with both natural and induced changes
 - Ground-truth annotations per point cloud pair: `unchanged`, `removed`, `added`
 
@@ -114,7 +114,7 @@ We sincerely acknowledge the following open-source projects for supporting our e
 
 ## Citation
 
-> Accepted at ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, proceedings of the ISPRS Congress 2026.
+> Published at ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, proceedings of the ISPRS Congress 2026.
 
 If you use this dataset in your research, please cite:
 
